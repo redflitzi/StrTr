@@ -1,2 +1,3 @@
-# implementing PHP's strtr for C# as String extension method
+# PHP's strtr for C#
 Missing PHP's strtr function oh so badly ...
+So going to implement it as a String extension.
