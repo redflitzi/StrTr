@@ -37,7 +37,6 @@ public static string StrTr(this string src, List<KeyValuePair<string, string>> r
   string srctail;
   bool done;
 	// sorting Keys by descending length makes sure to apply longer Keys first!
-	// replacePairs.Sort((KeyValuePair<string Key, string Value> r1, KeyValuePair<string Key, string Value> r2) 
 	replacePairs.Sort(( r1, r2) => (r2.Key.Length.CompareTo(r1.Key.Length)));
 	replacePairs.RemoveAll(r => r.Key == "");
 	while (srcoffs < src.Length) {
@@ -74,7 +73,6 @@ public static string StrTr(this string src, params (string Key, string Value)[] 
   int srcoffs = 0;
   string srctail;
   bool done;
-	// Array.Sort(replacePairs, (((string Key, string Value) r1, (string Key, string Value) r2) => (r2.Key.Length.CompareTo(r1.Key.Length)));
 	Array.Sort(replacePairs, (r1, r2) => (r2.Key.Length.CompareTo(r1.Key.Length)));
 	while (srcoffs < src.Length) {
 		srctail = src.Substring(srcoffs);
