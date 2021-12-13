@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Globalization;
 using System.Collections.Generic;
-using Generic.Dictionary;
 
 namespace StrtrExtension
 {
@@ -38,8 +37,8 @@ public static string StrTr(this string src, List<KeyValuePair<string, string>> r
   string srctail;
   bool done;
 	// sorting Keys by descending length makes sure to apply longer Keys first!
-	replacePairs.Sort((KeyValuePair<string Key, string Value> r1, KeyValuePair<string Key, string Value> r2) 
-		=> (r2.Key.Length.CompareTo(r1.Key.Length)));
+	// replacePairs.Sort((KeyValuePair<string Key, string Value> r1, KeyValuePair<string Key, string Value> r2) 
+	replacePairs.Sort(( r1, r2) => (r2.Key.Length.CompareTo(r1.Key.Length)));
 	replacePairs.RemoveAll(r => r.Key == "");
 	while (srcoffs < src.Length) {
 		srctail = src.Substring(srcoffs);
@@ -75,12 +74,12 @@ public static string StrTr(this string src, params (string Key, string Value)[] 
   int srcoffs = 0;
   string srctail;
   bool done;
-	Array.Sort(replacePairs, (((string Key, string Value) r1, (string Key, string Value) r2))
-		=> r2.Key.Length.CompareTo(r1.Key.Length));
+	// Array.Sort(replacePairs, (((string Key, string Value) r1, (string Key, string Value) r2) => (r2.Key.Length.CompareTo(r1.Key.Length)));
+	Array.Sort(replacePairs, (r1, r2) => (r2.Key.Length.CompareTo(r1.Key.Length)));
 	while (srcoffs < src.Length) {
 		srctail = src.Substring(srcoffs);
 		done = false;
-		foreach (replacement in replacePairs) {
+		foreach ((string Key, string Value) replacement in replacePairs) {
 			if (srctail.StartsWith(replacement.Key, StringComparison.Ordinal)) {
 				sb.Append(replacement.Value);
 				srcoffs += replacement.Key.Length;
