@@ -51,7 +51,7 @@ public static string StrTr(this string src, List<KeyValuePair<string, string>> r
 			}
 		}
 		if (!done) {
-			sb.Append(replacePairs[srcoffs]);
+			sb.Append(src[srcoffs]);
 			srcoffs++;
 		}
 	}
@@ -86,7 +86,7 @@ public static string StrTr(this string src, params (string Key, string Value)[] 
 			}
 		}
 		if (!done) {
-			sb.Append(replacePairs[srcoffs]);
+			sb.Append(src[srcoffs]);
 			srcoffs++;
 		}
 	}

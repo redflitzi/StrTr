@@ -14,6 +14,11 @@ namespace StrtrApp
 
 			Console.WriteLine("input: {0}, output: {1}", input, output);
 
+            input = "hallodrihallodra";
+            output =  input.StrTr (("dri","dra"), ("dra","dri"));
+
+            Console.WriteLine("input: {0}, output: {1}", input, output);
+
 		}
     }
 }
