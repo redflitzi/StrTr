@@ -3,8 +3,6 @@ Missing PHP's [strtr](https://www.php.net/manual/en/function.strtr.php) function
 
 This extension provides an additional **String.StrTr** method in several overloaded flavors. Each **StrTr** method call does not change the original string, but returns a modified copy. The arguments vary.
 
-<br/>
-
 ## Installation
 
 Usage of this extension is simple:
@@ -16,6 +14,9 @@ Usage of this extension is simple:
 ## Methods:
 
 ### [**StrTr(string** fromChars **, string** toChars **)**](#id-s1)
+### [**StrTr(params (string** Item1 **, string** Item2 **)[] ** replacePairs **)**](#id-s2)
+### [**StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)**](#kvp-sc)
+### [**StrTr(IEnumerable<(string, string)>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)**](#tup-sc)
 
 <br/>
 
@@ -39,7 +40,7 @@ This will replace every 'a' with 'A', 'b' with 'B', 'c' with 'C', and 'd' with '
 
 <br/>
 
-### **StrTr(params (string** Item1 **, string** Item2 **)[] ** replacePairs **)**
+### **StrTr(params (string** Item1 **, string** Item2 **)[] ** replacePairs **)** <a id="id-s2"></a>
 
 This method allows direct and literal use of tuples of (string, string) as arguments.\
 Each tuple is a (original, replacement) pair.
@@ -61,10 +62,32 @@ Additionally, they can take a culture info or string comparison mode. If this is
 
 <br/>
 
-### **StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)**
+### **StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)** <a id="kvp-sc"></a>
       
 This Method takes any enumerable collection of KeyValuePair als first argument. \
 It is therefore suitable for consuming a Dictionary.
+
+```
+var mydog = "My dog is friendly";
+var betterthanyours = new Dictionary<string,string> ()
+{
+    {"My", "Your"},
+    {"friendly", "nasty"}
+}; 
+var yourdog = mydog.StrTr(betterthanyours);
+Console.WriteLine("{0}, {1}.", mydog, yourdog);
+```
+Results in: \
+My dog is friendly, Your dog is nasty.
+
+
+
+<br/>
+
+### **StrTr(IEnumerable<(string, string)>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)**<a id="tup-sc"></a>
+      
+This Method takes any enumerable collection of tuples<string, string> als first argument. \
+It is therefore suitable for a List or Array of (original, replacement) tuples.
 
 ```
 var mydog = "My dog is friendly";
