@@ -68,14 +68,14 @@ namespace StrtrApp
             Console.WriteLine("input: {0}, output: {1}", input, output);            
             Console.WriteLine();
 
-            var mydog = "My dog is friendly";
-var betterthanyours = new Dictionary<string,string> ()
-{
-    {"My", "Your"},
-    {"friendly", "nasty"}
-}; 
-var yourdog = mydog.StrTr(betterthanyours);
-            Console.WriteLine("{0}, {1}.", mydog, yourdog);
+ 
+ 
+            var animals = "dogcathorsecow";
+            var resultReplace = animals.Replace("dog","cat").Replace("cat","horse").Replace("horse","cow").Replace("cow","bird");
+            var resultStrTr = animals.StrTr(("dog","cat"),("cat","horse"),("horse","cow"),("cow","bird"));
+
+            Console.WriteLine("resultReplace: {0}", resultReplace);
+            Console.WriteLine("resultStrTr {0}", resultStrTr);  
 
 		}		
     }

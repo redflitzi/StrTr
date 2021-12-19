@@ -16,7 +16,8 @@ Usage of this extension is simple:
 ### [**StrTr(string** fromChars **, string** toChars **)**](#id-s1)
 ### [**StrTr(params (string** Item1 **, string** Item2 **)[]** replacePairs **)**](#id-s2)
 ### [**StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)**](#kvp-sc)
-### [**StrTr(IEnumerable<(string, string)>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)**](#tup-sc)### [**StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **bool** ignoreCase, **System.Globalization.CultureInfo** culture = null **)**](#kvp-cu)
+### [**StrTr(IEnumerable<(string, string)>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)**](#tup-sc)
+### [**StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **bool** ignoreCase, **System.Globalization.CultureInfo** culture = null **)**](#kvp-cu)
 ### [**StrTr(IEnumerable<(string, string)>** replacePairs,  **bool** ignoreCase, **System.Globalization.CultureInfo** culture = null **)**](#tup-cu)
 
 <br/>
@@ -65,7 +66,7 @@ Additionally, they can take a culture info or string comparison mode. If this is
 
 ### **StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)** <a id="kvp-sc"></a>
       
-This Method takes any enumerable collection of KeyValuePair als first argument. \
+This Method takes any enumerable collection of KeyValuePair as its first argument. \
 It is therefore suitable for consuming a Dictionary.
 
 ```
@@ -87,7 +88,7 @@ My dog is friendly, Your dog is nasty.
 
 ### **StrTr(IEnumerable<(string, string)>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)**<a id="tup-sc"></a>
       
-This Method takes any enumerable collection of tuples<string, string> als first argument. \
+This Method takes any enumerable collection of tuples<string, string> as its first argument. \
 It is therefore suitable for a List or Array of (original, replacement) tuples.
 
 ```
@@ -109,17 +110,17 @@ My dog is friendly, Your dog is nasty.
 
 ### **StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **bool** ignoreCase, **System.Globalization.CultureInfo** culture = null **)** <a id="kvp-cu"></a>
       
-This Method takes any enumerable collection of KeyValuePair als first argument. \
+This Method takes any enumerable collection of KeyValuePair as its first argument. \
 It is therefore suitable for consuming a Dictionary.
 
 ```
 var mydog = "My dog is friendly";
 var betterthanyours = new Dictionary<string,string> ()
 {
-    {"My", "Your"},
-    {"friendly", "nasty"}
+    {"MY", "Your"},
+    {"FRIENDLY", "nasty"}
 }; 
-var yourdog = mydog.StrTr(betterthanyours);
+var yourdog = mydog.StrTr(betterthanyours, true);
 Console.WriteLine("{0}, {1}.", mydog, yourdog);
 ```
 Results in: \
@@ -131,24 +132,42 @@ My dog is friendly, Your dog is nasty.
 
 ### **StrTr(IEnumerable<(string, string)>** replacePairs, **bool** ignoreCase, **System.Globalization.CultureInfo** culture = null **)**<a id="tup-cu"></a>
       
-This Method takes any enumerable collection of tuples<string, string> als first argument. \
+This Method takes any enumerable collection of tuples<string, string> as its first argument. \
 It is therefore suitable for a List or Array of (original, replacement) tuples.
 
 ```
 var mydog = "My dog is friendly";
 var betterthanyours = new (string, string)[]
 {
-    ("MY", "Your"),
-    ("FrIeNdLy", "nasty")
+    ("My", "Your"),
+    ("friendly", "nasty")
 };
          
-var yourdog = mydog.StrTr(betterthanyours,StringComparison.OrdinalIgnoreCase);
+var yourdog = mydog.StrTr(betterthanyours, false, CultureInfo.CurrentCulture);
 Console.WriteLine("{0}, {1}.", mydog, yourdog);
 ```
 Results in: \
 My dog is friendly, Your dog is nasty.
 
 
+---
 
+## Why not simply use a chain of String.Replace?
 
+**Because it does not do the same.** \
+String.Replace replaces all occurences in the whole string. If you call it several times, any position in the string can be changed several times. \
+In the opposite, if you call String.StrTr with a collection of desired replacements, each position will only be changed once.
+
+Consider:
+````
+var animals = "dogcathorsecow";
+var resultReplace = animals.Replace("dog","cat").Replace("cat","horse").Replace("horse","cow").Replace("cow","bird");
+var resultStrTr = animals.StrTr(("dog","cat"),("cat","horse"),("horse","cow"),("cow","bird"));
+
+Console.WriteLine("resultReplace: {0}", resultReplace);
+Console.WriteLine("resultStrTr: {0}", resultStrTr);
+````
+This will result in: \
+resultReplace: birdbirdbirdbird \
+resultStrTr: cathorsecowbird
 
