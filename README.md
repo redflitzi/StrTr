@@ -67,7 +67,10 @@ Additionally, they can take a culture info or string comparison mode. If this is
 ### **StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)** <a id="kvp-sc"></a>
       
 This Method takes any enumerable collection of KeyValuePair as its first argument. \
-It is therefore suitable for consuming a Dictionary.
+It is therefore suitable for consuming a Dictionary. \
+Each Key will be replaced with the Value of the same KeyValuePair.
+
+An optional StringComparison enum argument allows specifying what type of comparison will be used for identifying the Key in the original string.
 
 ```
 var mydog = "My dog is friendly";
@@ -89,7 +92,11 @@ My dog is friendly, Your dog is nasty.
 ### **StrTr(IEnumerable<(string, string)>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)**<a id="tup-sc"></a>
       
 This Method takes any enumerable collection of tuples<string, string> as its first argument. \
-It is therefore suitable for a List or Array of (original, replacement) tuples.
+It is therefore suitable for a List or Array of (original, replacement) tuples. \
+Each Item1 will be replaced by Item2 of the same tuple.
+
+An optional StringComparison enum argument allows specifying what type of comparison will be used for identifying Item1 to replace in the original string.
+
 
 ```
 var mydog = "My dog is friendly";
@@ -111,7 +118,9 @@ My dog is friendly, Your dog is nasty.
 ### **StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **bool** ignoreCase, **System.Globalization.CultureInfo** culture = null **)** <a id="kvp-cu"></a>
       
 This Method takes any enumerable collection of KeyValuePair as its first argument. \
-It is therefore suitable for consuming a Dictionary.
+It is therefore suitable for consuming a Dictionary. \
+Each Key will be replaced with the Value of the same KeyValuePair.
+
 
 ```
 var mydog = "My dog is friendly";
@@ -133,7 +142,8 @@ My dog is friendly, Your dog is nasty.
 ### **StrTr(IEnumerable<(string, string)>** replacePairs, **bool** ignoreCase, **System.Globalization.CultureInfo** culture = null **)**<a id="tup-cu"></a>
       
 This Method takes any enumerable collection of tuples<string, string> as its first argument. \
-It is therefore suitable for a List or Array of (original, replacement) tuples.
+It is therefore suitable for a List or Array of (original, replacement) tuples. \
+Each Item1 will be replaced by Item2 of the same tuple.
 
 ```
 var mydog = "My dog is friendly";
@@ -152,16 +162,18 @@ My dog is friendly, Your dog is nasty.
 
 ---
 
-## Why not simply use a chain of String.Replace?
+## Why not simply use a series of String.Replace?
 
 **Because it does not do the same.** \
 String.Replace replaces all occurences in the whole string. If you call it several times, any position in the string can be changed several times. \
-In the opposite, if you call String.StrTr with a collection of desired replacements, each position will only be changed once.
+In the opposite, if you call String.StrTr with a collection of all desired replacements, each position will only be changed once.
 
-Consider:
+Consider the following:
 ````
 var animals = "dogcathorsecow";
+
 var resultReplace = animals.Replace("dog","cat").Replace("cat","horse").Replace("horse","cow").Replace("cow","bird");
+
 var resultStrTr = animals.StrTr(("dog","cat"),("cat","horse"),("horse","cow"),("cow","bird"));
 
 Console.WriteLine("resultReplace: {0}", resultReplace);
