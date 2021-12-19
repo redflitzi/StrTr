@@ -91,12 +91,13 @@ It is therefore suitable for a List or Array of (original, replacement) tuples.
 
 ```
 var mydog = "My dog is friendly";
-var betterthanyours = new Dictionary<string,string> ()
+var betterthanyours = new (string, string)[]
 {
-    {"My", "Your"},
-    {"friendly", "nasty"}
-}; 
-var yourdog = mydog.StrTr(betterthanyours);
+    ("MY", "Your"),
+    ("FrIeNdLy", "nasty")
+};
+         
+var yourdog = mydog.StrTr(betterthanyours,StringComparison.OrdinalIgnoreCase);
 Console.WriteLine("{0}, {1}.", mydog, yourdog);
 ```
 Results in: \
