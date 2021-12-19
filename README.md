@@ -121,6 +121,8 @@ This Method takes any enumerable collection of KeyValuePair as its first argumen
 It is therefore suitable for consuming a Dictionary. \
 Each Key will be replaced with the Value of the same KeyValuePair.
 
+For identifiying the Key in the original string, the ignore casing mode and optionally a culture info can be added. If the culture info is omitted, the default setting will be used (CultureInfo.CurrentCulture).
+
 
 ```
 var mydog = "My dog is friendly";
@@ -144,6 +146,8 @@ My dog is friendly, Your dog is nasty.
 This Method takes any enumerable collection of tuples<string, string> as its first argument. \
 It is therefore suitable for a List or Array of (original, replacement) tuples. \
 Each Item1 will be replaced by Item2 of the same tuple.
+
+For identifiying Item1 in the original string, the ignore casing mode and optionally a culture info can be added. If the culture info is omitted, the default setting will be used (CultureInfo.CurrentCulture).
 
 ```
 var mydog = "My dog is friendly";
