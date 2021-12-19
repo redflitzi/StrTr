@@ -71,11 +71,11 @@ namespace StrtrApp
  
  
             var animals = "dogcathorsecow";
-            var resultReplace = animals.Replace("dog","cat").Replace("cat","horse").Replace("horse","cow").Replace("cow","bird");
-            var resultStrTr = animals.StrTr(("dog","cat"),("cat","horse"),("horse","cow"),("cow","bird"));
+            var animalsReplace = animals.Replace("dog","cat").Replace("cat","horse").Replace("horse","cow").Replace("cow","bird");
+            var animalsStrTr = animals.StrTr(("dog","cat"),("cat","horse"),("horse","cow"),("cow","bird"));
 
-            Console.WriteLine("resultReplace: {0}", resultReplace);
-            Console.WriteLine("resultStrTr {0}", resultStrTr);  
+            Console.WriteLine("animalsReplace: {0}", animalsReplace);
+            Console.WriteLine("animalsStrTr: {0}", animalsStrTr);  
 
 		}		
     }

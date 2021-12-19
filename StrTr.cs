@@ -11,7 +11,7 @@ namespace StringStrtrExtension
     public static class StringExtension
     {
 
-        // char => char (classic, with Strings, Ordinal)
+        // char => char (classic, with from/to Strings, Ordinal)
         public static string StrTr(this string src, string fromChars, string toChars)
         {
             StringBuilder sb = new StringBuilder();
@@ -37,54 +37,13 @@ namespace StringStrtrExtension
 
 
         // string, string (with array of Tuples), Ordinal
-        public static string StrTr22(this string src, params (string Item1, string Item2)[] translatePairs)
+    	public static string StrTr(this string src, params (string, string)[] replacePairs)
         {
-            // sort by length descending, making sure to compare longer Keys first!
-            StringBuilder sb = new StringBuilder();
-            int srcoffs = 0;
-            string srctail;
-            bool done;
-            Array.Sort(translatePairs, (r1, r2) => (r2.Item1.Length.CompareTo(r1.Item1.Length)));
-            while (srcoffs < src.Length)
-            {
-                srctail = src.Substring(srcoffs);
-                done = false;
-                foreach ((string Item1, string Item2) replacement in translatePairs)
-                {
-                    if (srctail.StartsWith(replacement.Item1, StringComparison.Ordinal))
-                    {
-                        sb.Append(replacement.Item2);
-                        srcoffs += replacement.Item1.Length;
-                        done = true;
-                        break;
-                    }
-                }
-                if (!done)
-                {
-                    sb.Append(src[srcoffs]);
-                    srcoffs++;
-                }
-            }
-            return sb.ToString();
-        }
-
-
-       public static string StrTr(this string src, params (string, string)[] translatePairs)
-        {
-			List<(string, string)> pairs = translatePairs.ToList();
-			string newsrc = src.StrTr(pairs);
+			string newsrc = src.StrTr(replacePairs, StringComparison.Ordinal);
 			return newsrc;
 
         }
 
-
-       public static string StrTr(this string src, params KeyValuePair<string, string>[] translatePairs)
-        {
-			List<KeyValuePair<string, string>> pairs = translatePairs.ToList();
-			string newsrc = src.StrTr(pairs, StringComparison.Ordinal);
-			return newsrc;
-
-        }
 
         /********************************* IEnumerable **********************************/
 

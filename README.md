@@ -165,21 +165,21 @@ My dog is friendly, Your dog is nasty.
 ## Why not simply use a series of String.Replace?
 
 **Because it does not do the same.** \
-String.Replace replaces all occurences in the whole string. If you call it several times, any position in the string can be changed several times. \
-In the opposite, if you call String.StrTr with a collection of all desired replacements, each position will only be changed once.
+String.Replace replaces all occurences in the whole string. If you call it several times, any position in the string can be modified several times. \
+In the opposite, if you call String.StrTr with a collection of all desired replacements, each position will only be modified once.
 
 Consider the following:
 ````
 var animals = "dogcathorsecow";
 
-var resultReplace = animals.Replace("dog","cat").Replace("cat","horse").Replace("horse","cow").Replace("cow","bird");
+var animalsReplace = animals.Replace("dog","cat").Replace("cat","horse").Replace("horse","cow").Replace("cow","bird");
 
-var resultStrTr = animals.StrTr(("dog","cat"),("cat","horse"),("horse","cow"),("cow","bird"));
+var animalsStrTr = animals.StrTr(("dog","cat"),("cat","horse"),("horse","cow"),("cow","bird"));
 
-Console.WriteLine("resultReplace: {0}", resultReplace);
-Console.WriteLine("resultStrTr: {0}", resultStrTr);
+Console.WriteLine("Replace: {0}", animalsReplace);
+Console.WriteLine("StrTr: {0}", animalsStrTr);
 ````
 This will result in: \
-resultReplace: birdbirdbirdbird \
-resultStrTr: cathorsecowbird
+Replace: birdbirdbirdbird \
+StrTr: cathorsecowbird
 
