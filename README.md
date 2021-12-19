@@ -60,7 +60,7 @@ So if mypet contains "My small cat says meow", myotherpet will be "My big dog sa
 ## Culture-Aware 
 
 A set of methods that take various enumerable collections with (original, replacement) pairs to apply to the input string. \
-Additionally, they can take a culture info or string comparison mode. If this is omitted, they work in Ordinal mode.
+Additionally, they can take a culture info or string comparison mode. If this is completely omitted, they work in Ordinal mode.
 
 <br/>
 
