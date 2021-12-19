@@ -15,7 +15,7 @@ Usage of this extension is simple:
 
 ## Methods:
 
-[**StrTr(string** fromChars **, string** toChars **)**](#m1)
+### [**StrTr(string** fromChars **, string** toChars **)**](#id-s1)
 
 <br/>
 
@@ -28,7 +28,7 @@ No culture info or string comparison mode is supported.
 <br/>
     
 
-### **StrTr(string** fromChars **, string** toChars **)** {#m1}
+### **StrTr(string** fromChars **, string** toChars **)** <a id="id-s1"></a>
 
 This method returns a copy of the current string where all occurrences of each character in **fromChars** have been translated to the corresponding character in **toChars**, i.e., every occurrence of fromChars[n] has been replaced with toChars[n], where n is a valid offset in both arguments.
 
