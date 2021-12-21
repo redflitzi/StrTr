@@ -3,6 +3,9 @@ Missing PHP's [strtr](https://www.php.net/manual/en/function.strtr.php) function
 
 This extension provides an additional **String.StrTr** method in several overloaded flavors. Each **StrTr** method call does not change the original string, but returns a modified copy. The arguments vary.
 
+Using **StrTr** method with a collection of replacements, each character of the string will be replaced at most once. \
+In the opposite, when chaining several **Replace** calls, each call will potentially replace all characters,so each position can be modified more than once. See [below](#why-not-simply-use-a-series-of-stringreplace).
+
 ## Installation
 
 Usage of this extension is simple:
@@ -36,9 +39,15 @@ No culture info or string comparison mode is supported.
 This method returns a copy of the current string where all occurrences of each character in **fromChars** have been translated to the corresponding character in **toChars**, i.e., every occurrence of fromChars[n] has been replaced with toChars[n], where n is a valid offset in both arguments.
 
 Call it just like: \
-`mynewstring = mystring.StrTr("abcd","ABCD");`
+```
+var mystring = "a dog is a bad cat";
 
-This will replace every 'a' with 'A', 'b' with 'B', 'c' with 'C', and 'd' with 'D'.
+// replace each 'a' with 'A', 'b' with 'B', 'c' with 'C', and 'd' with 'D'
+var mynewstring = mystring.StrTr("abcd","ABCD");
+Console.WriteLine(mynewstring);
+```
+Results in: \
+A Dog is A BAD CAt
 
 <br/>
 
@@ -48,9 +57,15 @@ This method allows direct and literal use of tuples of (string, string) as argum
 Each tuple is a (original, replacement) pair.
 
 Call it like: \
-`myotherpet = mypet.StrTr(("cat","dog"), ("small","big"), ("meow", "woof woof"));`
+```
+var mypet = "My small cat says meow";
 
-So if mypet contains "My small cat says meow", myotherpet will be "My big dog says woof woof".
+// replace each "cat" with "dog", "small" with "big", and "meow" with "woof woof"
+var myotherpet = mypet.StrTr(("cat","dog"), ("small","big"), ("meow", "woof woof"));
+Console.WriteLine(myotherpet);
+```
+Results in: \
+My big dog says woof woof
 
 <br/>
 
