@@ -12,10 +12,10 @@ namespace StrtrApp
         {
 
             Console.WriteLine();
-			string input ="baab";
-			string output = input.StrTr("ab", "ba");
+	    string input ="baab";
+	    string output = input.StrTr("ab", "ba");
 
-			Console.WriteLine("input: {0}, output: {1}", input, output);            
+	    Console.WriteLine("input: {0}, output: {1}", input, output);            
             Console.WriteLine();
 
             input = "hallodrihallodra";
@@ -77,6 +77,6 @@ namespace StrtrApp
             Console.WriteLine("animalsReplace: {0}", animalsReplace);
             Console.WriteLine("animalsStrTr: {0}", animalsStrTr);  
 
-		}		
+	}		
     }
 }
