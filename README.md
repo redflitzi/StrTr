@@ -38,7 +38,7 @@ No culture info or string comparison mode is supported.
 
 This method returns a copy of the current string where all occurrences of each character in **fromChars** have been translated to the corresponding character in **toChars**, i.e., every occurrence of fromChars[n] has been replaced with toChars[n], where n is a valid offset in both arguments.
 
-Call it just like: \
+Call it just like:
 ```
 var mystring = "a dog is a bad cat";
 
@@ -56,7 +56,7 @@ A Dog is A BAD CAt
 This method allows direct and literal use of tuples of (string, string) as arguments.\
 Each tuple is a (original, replacement) pair.
 
-Call it like: \
+Call it like:
 ```
 var mypet = "My small cat says meow";
 
