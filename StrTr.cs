@@ -39,22 +39,22 @@ namespace StringStrtrExtension
         // string, string (with array of Tuples), Ordinal
     	public static string StrTr(this string src, params (string, string)[] replacePairs)
         {
-			string newsrc = src.StrTr(replacePairs, StringComparison.Ordinal);
-			return newsrc;
+	    string newsrc = src.StrTr(replacePairs, StringComparison.Ordinal);
+	    return newsrc;
 
         }
 
 
         /********************************* IEnumerable **********************************/
 
-        // string => string (with IEnumerable of KeyValuePairs<string, string>)
+        // string => string (with IEnumerable of KeyValuePairs<string, string> and StringComparison)
         public static string StrTr(this string src, IEnumerable<KeyValuePair<string, string>> replacePairs, StringComparison mode = StringComparison.Ordinal)
         {
             StringBuilder sb = new StringBuilder();
             int srcoffs = 0;
             string srctail;
             bool done;
-			IEnumerable<KeyValuePair<string, string>> orderedPairs = replacePairs.Where(rp => rp.Key != "").OrderByDescending(rp => rp.Key.Length);
+	    IEnumerable<KeyValuePair<string, string>> orderedPairs = replacePairs.Where(rp => rp.Key != "").OrderByDescending(rp => rp.Key.Length);
             while (srcoffs < src.Length)
             {
                 srctail = src.Substring(srcoffs);
@@ -79,14 +79,14 @@ namespace StringStrtrExtension
         }
 
 
-        // string => string (with IEnumerable of Tuples<string, string>)
+        // string => string (with IEnumerable of Tuples<string, string> and StringComparison)
         public static string StrTr(this string src, IEnumerable<(string, string)> replacePairs, StringComparison mode = StringComparison.Ordinal)
         {
             StringBuilder sb = new StringBuilder();
             int srcoffs = 0;
             string srctail;
             bool done;
-			IEnumerable<(string, string)> orderedPairs = replacePairs.Where(rp => rp.Item1 != "").OrderByDescending(rp => rp.Item1.Length);
+	    IEnumerable<(string, string)> orderedPairs = replacePairs.Where(rp => rp.Item1 != "").OrderByDescending(rp => rp.Item1.Length);
             while (srcoffs < src.Length)
             {
                 srctail = src.Substring(srcoffs);
@@ -112,14 +112,14 @@ namespace StringStrtrExtension
 
 
 
-        // string => string (with IEnumerable of KeyValuePairs<string, string>)
+        // string => string (with IEnumerable of KeyValuePairs<string, string> and CultureInfo)
         public static string StrTr(this string src, IEnumerable<KeyValuePair<string, string>> replacePairs, bool ignoreCase, System.Globalization.CultureInfo culture = null)
         {
             StringBuilder sb = new StringBuilder();
             int srcoffs = 0;
             string srctail;
             bool done;
-			IEnumerable<KeyValuePair<string, string>> orderedPairs = replacePairs.Where(rp => rp.Key != "").OrderByDescending(rp => rp.Key.Length);
+	    IEnumerable<KeyValuePair<string, string>> orderedPairs = replacePairs.Where(rp => rp.Key != "").OrderByDescending(rp => rp.Key.Length);
             while (srcoffs < src.Length)
             {
                 srctail = src.Substring(srcoffs);
@@ -144,14 +144,14 @@ namespace StringStrtrExtension
         }
 
 
-        // string => string (with IEnumerable of Tuples<string, string>)
+        // string => string (with IEnumerable of Tuples<string, string> and CultureInfo)
         public static string StrTr(this string src, IEnumerable<(string, string)> replacePairs, bool ignoreCase, System.Globalization.CultureInfo culture = null)
         {
             StringBuilder sb = new StringBuilder();
             int srcoffs = 0;
             string srctail;
             bool done;
-			IEnumerable<(string, string)> orderedPairs = replacePairs.Where(rp => rp.Item1 != "").OrderByDescending(rp => rp.Item1.Length);
+	    IEnumerable<(string, string)> orderedPairs = replacePairs.Where(rp => rp.Item1 != "").OrderByDescending(rp => rp.Item1.Length);
             while (srcoffs < src.Length)
             {
                 srctail = src.Substring(srcoffs);
