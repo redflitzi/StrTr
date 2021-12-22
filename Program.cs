@@ -12,19 +12,19 @@ namespace StrtrApp
         {
 
             Console.WriteLine();
-	    string input ="baab";
-	    string output = input.StrTr("ab", "ba");
+            string input = "baab";
+            string output = input.StrTr("ab", "ba");
 
-	    Console.WriteLine("input: {0}, output: {1}", input, output);            
+            Console.WriteLine("input: {0}, output: {1}", input, output);
             Console.WriteLine();
 
             input = "hallodrihallodra";
-            output =  input.StrTr (("dri","dra"), ("dra","dri"));
+            output = input.StrTr(("dri", "dra"), ("dra", "dri"));
 
-            Console.WriteLine("input: {0}, output: {1}", input, output);            
+            Console.WriteLine("input: {0}, output: {1}", input, output);
             Console.WriteLine();
 
-            var kvpdict = new Dictionary<string,string> ()
+            var kvpdict = new Dictionary<string, string>()
             {
                 {"hallo", "hi"},
                 {"dri", "dra"},
@@ -32,8 +32,8 @@ namespace StrtrApp
             };
 
             output = input.StrTr(kvpdict);
-            
-            Console.WriteLine("input: {0}, output: {1}", input, output);            
+
+            Console.WriteLine("input: {0}, output: {1}", input, output);
             Console.WriteLine();
 
             var tupleList = new List<(string, string)>
@@ -42,14 +42,14 @@ namespace StrtrApp
                 ("Dri", "chicken"),
                 ("RA", "dog")
             };
-            output = input.StrTr(tupleList,StringComparison.OrdinalIgnoreCase);
-            
-            Console.WriteLine("input: {0}, output: {1}", input, output);            
+            output = input.StrTr(tupleList, StringComparison.OrdinalIgnoreCase);
+
+            Console.WriteLine("input: {0}, output: {1}", input, output);
             Console.WriteLine();
 
-            output = input.StrTr(tupleList,false);
-            
-            Console.WriteLine("input: {0}, output: {1}", input, output);            
+            output = input.StrTr(tupleList, false);
+
+            Console.WriteLine("input: {0}, output: {1}", input, output);
             Console.WriteLine();
 
             var tupleArray = new (string, string)[]
@@ -58,25 +58,25 @@ namespace StrtrApp
                 ("Dri", "chicken"),
                 ("RA", "dog")
             };
-            output = input.StrTr(tupleArray,StringComparison.OrdinalIgnoreCase);
-            
-            Console.WriteLine("input: {0}, output: {1}", input, output);            
+            output = input.StrTr(tupleArray, StringComparison.OrdinalIgnoreCase);
+
+            Console.WriteLine("input: {0}, output: {1}", input, output);
             Console.WriteLine();
 
-            output = input.StrTr(tupleArray,false,CultureInfo.CurrentCulture);
-            
-            Console.WriteLine("input: {0}, output: {1}", input, output);            
+            output = input.StrTr(tupleArray, false, CultureInfo.CurrentCulture);
+
+            Console.WriteLine("input: {0}, output: {1}", input, output);
             Console.WriteLine();
 
- 
- 
+
+
             var animals = "dogcathorsecow";
-            var animalsReplace = animals.Replace("dog","cat").Replace("cat","horse").Replace("horse","cow").Replace("cow","bird");
-            var animalsStrTr = animals.StrTr(("dog","cat"),("cat","horse"),("horse","cow"),("cow","bird"));
+            var animalsReplace = animals.Replace("dog", "cat").Replace("cat", "horse").Replace("horse", "cow").Replace("cow", "bird");
+            var animalsStrTr = animals.StrTr(("dog", "cat"), ("cat", "horse"), ("horse", "cow"), ("cow", "bird"));
 
             Console.WriteLine("animalsReplace: {0}", animalsReplace);
-            Console.WriteLine("animalsStrTr: {0}", animalsStrTr);  
+            Console.WriteLine("animalsStrTr: {0}", animalsStrTr);
 
-	}		
+        }
     }
 }

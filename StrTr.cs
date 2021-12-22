@@ -37,10 +37,10 @@ namespace StringStrtrExtension
 
 
         // string, string (with array of Tuples), Ordinal
-    	public static string StrTr(this string src, params (string, string)[] replacePairs)
+        public static string StrTr(this string src, params (string, string)[] replacePairs)
         {
-	    string newsrc = src.StrTr(replacePairs, StringComparison.Ordinal);
-	    return newsrc;
+            string newsrc = src.StrTr(replacePairs, StringComparison.Ordinal);
+            return newsrc;
 
         }
 
@@ -54,7 +54,7 @@ namespace StringStrtrExtension
             int srcoffs = 0;
             string srctail;
             bool done;
-	    IEnumerable<KeyValuePair<string, string>> orderedPairs = replacePairs.Where(rp => rp.Key != "").OrderByDescending(rp => rp.Key.Length);
+            IEnumerable<KeyValuePair<string, string>> orderedPairs = replacePairs.Where(rp => rp.Key != "").OrderByDescending(rp => rp.Key.Length);
             while (srcoffs < src.Length)
             {
                 srctail = src.Substring(srcoffs);
@@ -86,7 +86,7 @@ namespace StringStrtrExtension
             int srcoffs = 0;
             string srctail;
             bool done;
-	    IEnumerable<(string, string)> orderedPairs = replacePairs.Where(rp => rp.Item1 != "").OrderByDescending(rp => rp.Item1.Length);
+            IEnumerable<(string, string)> orderedPairs = replacePairs.Where(rp => rp.Item1 != "").OrderByDescending(rp => rp.Item1.Length);
             while (srcoffs < src.Length)
             {
                 srctail = src.Substring(srcoffs);
@@ -119,7 +119,7 @@ namespace StringStrtrExtension
             int srcoffs = 0;
             string srctail;
             bool done;
-	    IEnumerable<KeyValuePair<string, string>> orderedPairs = replacePairs.Where(rp => rp.Key != "").OrderByDescending(rp => rp.Key.Length);
+            IEnumerable<KeyValuePair<string, string>> orderedPairs = replacePairs.Where(rp => rp.Key != "").OrderByDescending(rp => rp.Key.Length);
             while (srcoffs < src.Length)
             {
                 srctail = src.Substring(srcoffs);
@@ -151,7 +151,7 @@ namespace StringStrtrExtension
             int srcoffs = 0;
             string srctail;
             bool done;
-	    IEnumerable<(string, string)> orderedPairs = replacePairs.Where(rp => rp.Item1 != "").OrderByDescending(rp => rp.Item1.Length);
+            IEnumerable<(string, string)> orderedPairs = replacePairs.Where(rp => rp.Item1 != "").OrderByDescending(rp => rp.Item1.Length);
             while (srcoffs < src.Length)
             {
                 srctail = src.Substring(srcoffs);
