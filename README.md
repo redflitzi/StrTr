@@ -1,9 +1,9 @@
 # PHP's strtr for C#
 Missing PHP's [strtr](https://www.php.net/manual/en/function.strtr.php) function oh so badly ... So I implemented it as a String extension. 
 
-This extension provides an additional **String.StrTr** method in several overloaded flavors. Each **StrTr** method call does not change the original string, but returns a modified copy. The arguments vary.
+This extension provides an additional **String.StrTr** method in several overloaded flavors. Each **StrTr** call does not change the original string, but returns a modified copy. The arguments vary.
 
-Using **StrTr** method with a collection of replacements, each character of the string will be replaced at most once. \
+Using any **StrTr** call with a collection of replacements, each character of the string will be replaced at most once. \
 In the opposite, when chaining several **Replace** calls, each call will potentially replace all characters, so each position can be modified more than once. See [below](#why-not-simply-use-a-series-of-stringreplace).
 
 ## Installation
