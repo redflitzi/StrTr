@@ -14,7 +14,7 @@ Usage of this extension is simple:
  `using StringStrtrExtension;`
 3. start calling the additional **StrTr** methods.
 
-## Methods:
+## Overloads:
 
 ### [**StrTr(string** fromChars **, string** toChars **)**](#id-s1)
 ### [**StrTr(params (string** Item1 **, string** Item2 **)[]** replacePairs **)**](#id-s2)
@@ -36,7 +36,7 @@ No culture info or string comparison mode is supported.
 
 ### **StrTr(string** fromChars **, string** toChars **)** <a id="id-s1"></a>
 
-This method returns a copy of the current string where all occurrences of each character in **fromChars** have been translated to the corresponding character in **toChars**, i.e., every occurrence of fromChars[n] has been replaced with toChars[n], where n is a valid offset in both arguments.
+This overload returns a copy of the current string where all occurrences of each character in **fromChars** have been translated to the corresponding character in **toChars**, i.e., every occurrence of fromChars[n] has been replaced with toChars[n], where n is a valid offset in both arguments.
 
 Call it just like:
 ```
@@ -53,7 +53,7 @@ A Dog is A BAD CAt
 
 ### **StrTr(params (string** Item1 **, string** Item2 **)[]** replacePairs **)** <a id="id-s2"></a>
 
-This method allows direct and literal use of tuples of (string, string) as arguments.\
+This overload allows direct and literal use of tuples of (string, string) as arguments.\
 Each tuple is a (original, replacement) pair.
 
 Call it like:
@@ -72,16 +72,16 @@ My big dog says woof woof
 --- 
 
 
-## Culture-Aware 
+## Enumerable Collections, Culture-Aware 
 
-A set of methods that take various enumerable collections with (original, replacement) pairs to apply to the input string. \
+A set of overloads that take various enumerable collections with (original, replacement) pairs to apply to the input string. \
 Additionally, they can take a culture info or string comparison mode. If this is completely omitted, they work in Ordinal mode.
 
 <br/>
 
 ### **StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)** <a id="kvp-sc"></a>
       
-This Method takes any enumerable collection of KeyValuePair as its first argument. \
+Takes any enumerable collection of KeyValuePair as its first argument. \
 It is therefore suitable for consuming a Dictionary. \
 Each Key will be replaced with the Value of the same KeyValuePair.
 
@@ -106,7 +106,7 @@ My dog is friendly, Your dog is nasty.
 
 ### **StrTr(IEnumerable<(string, string)>** replacePairs, **StringComparison** mode = StringComparison.Ordinal **)**<a id="tup-sc"></a>
       
-This Method takes any enumerable collection of tuples<string, string> as its first argument. \
+Takes any enumerable collection of tuples<string, string> as its first argument. \
 It is therefore suitable for a List or Array of (original, replacement) tuples. \
 Each Item1 will be replaced by Item2 of the same tuple.
 
@@ -132,7 +132,7 @@ My dog is friendly, Your dog is nasty.
 
 ### **StrTr(IEnumerable<KeyValuePair<string, string>>** replacePairs, **bool** ignoreCase, **System.Globalization.CultureInfo** culture = null **)** <a id="kvp-cu"></a>
       
-This Method takes any enumerable collection of KeyValuePair as its first argument. \
+Takes any enumerable collection of KeyValuePair as its first argument. \
 It is therefore suitable for consuming a Dictionary. \
 Each Key will be replaced with the Value of the same KeyValuePair.
 
@@ -158,7 +158,7 @@ My dog is friendly, Your dog is nasty.
 
 ### **StrTr(IEnumerable<(string, string)>** replacePairs, **bool** ignoreCase, **System.Globalization.CultureInfo** culture = null **)**<a id="tup-cu"></a>
       
-This Method takes any enumerable collection of tuples<string, string> as its first argument. \
+Takes any enumerable collection of tuples<string, string> as its first argument. \
 It is therefore suitable for a List or Array of (original, replacement) tuples. \
 Each Item1 will be replaced by Item2 of the same tuple.
 
